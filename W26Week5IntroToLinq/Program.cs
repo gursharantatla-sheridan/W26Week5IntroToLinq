@@ -1,4 +1,6 @@
-﻿namespace W26Week5IntroToLinq
+﻿using ConsoleTables;
+
+namespace W26Week5IntroToLinq
 {
     internal class Program
     {
@@ -100,6 +102,20 @@
             foreach (var emp in empNames)
                 Console.WriteLine(emp);
             Console.WriteLine("\n\n");
+
+
+
+            // consoletables
+
+            ConsoleTable tbl = new ConsoleTable("First name", "Last name", "Salary");
+            
+            foreach (var emp in employees)
+            {
+                tbl.AddRow(emp.FirstName, emp.LastName, emp.Salary.ToString("C"));
+            }
+
+            tbl.Write(Format.MarkDown);
+            Console.WriteLine();
         }
     }
 }
