@@ -59,10 +59,47 @@
                 new Employee("John", "Brown", 5000),
                 new Employee("Alice", "Indigo", 6000),
                 new Employee("Bob", "Green", 8000),
-                new Employee("Cathy", "White", 5500),
+                new Employee("Cathy", "White", 5500)
             };
 
 
+            foreach (var emp in employees)
+                Console.WriteLine(emp);
+            Console.WriteLine("\n\n");
+
+
+            var between4k6k = from e in employees
+                              where e.Salary >= 4000 && e.Salary <= 6000
+                              select e;
+
+            foreach (var emp in between4k6k)
+                Console.WriteLine(emp);
+            Console.WriteLine("\n\n");
+
+
+            var sortedEmps = from e in employees
+                             orderby e.LastName, e.FirstName
+                             select e;
+
+            foreach (var emp in sortedEmps)
+                Console.WriteLine(emp);
+            Console.WriteLine("\n\n");
+
+
+            var lastnames = from e in employees
+                            select e.LastName;
+
+            foreach (var emp in lastnames.Distinct())
+                Console.WriteLine(emp);
+            Console.WriteLine("\n\n");
+
+
+            var empNames = from e in employees
+                           select new { e.FirstName, e.LastName };
+
+            foreach (var emp in empNames)
+                Console.WriteLine(emp);
+            Console.WriteLine("\n\n");
         }
     }
 }
